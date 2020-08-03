@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const handleClick = () => {
+        if(navigator.bluetooth) {
+            navigator.bluetooth.requestDevice({
+                acceptAllDevices: true,
+              })
+        } else {
+            alert("This navigator doesn't support bluetooth..");
+        }
+      };
+
+     return (
+         <div className="main-container">
+            <h1 className="text-al-c">MONITOREO DE SIGNOS VITALES</h1>
+            <button onClick={handleClick}>Conectarse a dispositivo</button>
+         </div>
+        );
 }
 
 export default App;
